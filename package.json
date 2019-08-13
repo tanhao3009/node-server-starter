@@ -4,8 +4,12 @@
   "description": "Build an exemplary server with nodejs",
   "main": "./dist/server.js",
   "scripts": {
+    "start": "node dist/server.js",
     "dev": "ts-node-dev --respawn --transpileOnly ./src/server.ts",
     "prod": "npm run tsc && node ./dist/server.js",
+    "build": "npm run build-ts && npm run lint",
+    "build-ts": "tsc",
+    "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc"
   },
@@ -52,9 +56,10 @@
     "passport": "^0.4.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
+    "ts-node": "^8.3.0",
     "ts-node-dev": "^1.0.0-pre.39",
-    "typescript": "^3.5.1",
-    "winston": "^3.2.1"
+    "typescript": "^3.5.2",
+    "winston": "^2.4.2"
   },
   "devDependencies": {
     "@types/async": "^3.0.1",
@@ -83,6 +88,7 @@
     "@types/supertest": "^2.0.8",
     "@types/winston": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
     "chai": "^4.2.0",
     "concurrently": "^4.1.1",
     "eslint": "^6.1.0",
