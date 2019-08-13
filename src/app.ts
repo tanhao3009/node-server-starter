@@ -6,6 +6,9 @@ import mongoose from "mongoose";
 import mongo from "connect-mongo";
 import { MONGODB_URI, SESSION_SECRET } from "./utils/secrets";
 
+
+import * as homeController from "./controllers/home";
+
 const MongoStore = mongo(session);
 
 // Load environment variables from .env file, where API keys and passwords are configured
@@ -21,10 +24,10 @@ mongoose.Promise = bluebird;
 console.log("MONGODB_URI: %o", MONGODB_URI);
 
 mongoose.connect(mongoUrl, { useNewUrlParser: true} ).then(
-  () => { 
+    () => { 
     /** ready to use. The `mongoose.connect()` promise resolves to undefined. */ 
-    console.log("MongoDB connected.");
-  },
+        console.log("MongoDB connected.");
+    },
 ).catch(err => {
     console.log("MongoDB connection error. Please make sure MongoDB is running. " + err);
     // process.exit();
@@ -41,5 +44,11 @@ app.use(session({
         autoReconnect: true
     })
 }));
+
+/**
+ * API examples routes.
+ */
+
+app.get("/", homeController.getUsages);
 
 export default app;

@@ -19,10 +19,3 @@ app.listen(app.get("port"), function() {
     );
     console.log("Press CTRL-C to stop\n");
 });
-
-/**
- * API examples routes.
- */
-app.get("/", function (req, res) {
-    res.send("Hello, World!");
-});

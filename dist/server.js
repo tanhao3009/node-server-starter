@@ -16,10 +16,4 @@ app_1.default.listen(app_1.default.get("port"), function () {
     console.log("App is running at http://localhost:%d in %s mode", app_1.default.get("port"), app_1.default.get("env"));
     console.log("Press CTRL-C to stop\n");
 });
-/**
- * API examples routes.
- */
-app_1.default.get("/", function (req, res) {
-    res.send("Hello, World!");
-});
 //# sourceMappingURL=server.js.map
